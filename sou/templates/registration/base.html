@@ -1,0 +1,17 @@
+{% extends "base.html" %}{% load i18n %}
+
+
+{% block content %}
+
+  <!-- Intro Section -->
+  <section id="login">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+            {% block registration_content %}{% endblock %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+    

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n coop_edition %}
+
+{% block extra_head %}
+    <script type="text/javascript">
+        $(function() {
+            $("ul.filter-menu li").each(function(idx, elt){
+                if (
+                    $(elt).find('a').attr('href') == '???') {
+                    $(elt).addClass('selected');
+                }
+            });
+        })
+    </script>
+    {{ block.super }}
+{% endblock %}
+
+{% block document %}
+<section id="intro" class="intro-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="photologue">
+          {% block content_inside %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

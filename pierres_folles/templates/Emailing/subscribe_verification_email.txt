@@ -1,0 +1,16 @@
+{% load i18n balafon_utils %}
+
+{% blocktrans %}
+Bonjour,
+
+Nous avons bien reçu votre inscription à la Newsletter de la Course des Pierres Folles.
+
+On espère aussi vous compter parmi nous le Samedi 23 septembre à Rozier en Donzy.
+
+Merci de confirmer votre adresse email, en cliquant sur le lien suivant:
+
+http://{{site}}{{verification_url}}
+
+Les organisateurs de la Course des Pierres Folles
+
+{% endblocktrans %}

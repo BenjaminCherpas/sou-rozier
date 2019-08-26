@@ -1,0 +1,24 @@
+{% extends "Emailing/newsletter.html" %}
+{% load i18n coop_edition coop_utils %}
+
+{% block body_style %}background: #f0f0f0; font-family: 'Arial', sans-serif;{% endblock %}
+
+{% block newsletter %}
+    {% nlf_css ".content a"="color: #fff; background: #8DC648; padding: 0 2px;" h2="color: #8DC648;" %}
+    <div class="content" style="background: #fff; color: #000; width: 700px; padding: 20px; margin: 0 auto;">
+        {% cms_edit newsletter %}
+        <div style="">
+            {% coop_piece_of_html "ente_newsletter_2016" %}
+        </div>
+    
+        <table><tr>
+            <td style="width: 700px; font-size: 24px;">
+                <h1 style="margin: 5px 0;">{{ newsletter.subject }}</h1>
+                {{ newsletter.content }}
+            </td>
+        </tr></table>
+        {% end_cms_edit %}
+
+    </div>
+    {% end_nlf_css %}
+{% endblock %}

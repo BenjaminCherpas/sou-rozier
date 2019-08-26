@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block document %}
+    <section id="intro" class="intro-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class="article-title">{% trans "Page inconnue" %}</h1>
+          <div class="article-content">
+            <p>
+            {% blocktrans %}
+            La page demandée n'existe pas sur le site. Vous pouvez revenir à la <a href="/">page d'accueil.</a>
+            {% endblocktrans %}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+

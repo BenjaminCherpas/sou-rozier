@@ -1,0 +1,14 @@
+{% load i18n %}
+<td{% if colspan %} colspan={{colspan}}{% endif %}>
+  {% if field.errors %}
+  <ul class="fielderror">
+    <img src="{{STATIC_URL}}img/fielderror.png" class="fielderror-ico"/>
+      {% for err in field.errors %}
+          <li>{{err}}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+  {{field}}
+  {% if show_label %}{{field.label}}{% endif %}
+  {% if field.help_text %}<div class="help-text">{{ field.help_text }}</div>{% endif %}
+</td>

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block extra_head %}
+<style>
+#id_city {
+  width: 50%;
+}
+</style>
+<script>
+  $(function() {
+    var show_entity = function() {
+      if ($("#id_entity_type").val()!='0') {
+        $("#id_entity").show();
+      } else {
+        $("#id_entity").hide();
+      }
+    }
+    show_entity();
+    $("#id_entity_type").change(show_entity);
+    
+  });
+</script>
+{% endblock %}
+
+{% block document %}
+  <section id="intro" class="intro-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          {% block custom_content %}{% endblock %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

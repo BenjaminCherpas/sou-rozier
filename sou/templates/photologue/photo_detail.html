@@ -1,0 +1,26 @@
+{% extends "photologue/root.html" %}
+{% load i18n %}
+
+{% load photologue_tags %}
+
+{% block title %}
+{% if object.public_galleries %}
+{% for gallery in object.public_galleries|slice:"0:1" %}
+    {% previous_in_gallery object gallery %}
+    {% next_in_gallery object gallery %}
+    <a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a>
+{% endfor %}
+{% else %}
+    {{ object.title }}
+{% endif %}
+{% endblock %}
+
+{% block content_inside %}
+<div class="gallery-photo">
+    <div class="head">
+        <h2 class="txt">{{ object.title }}</h2>
+    </div>
+    <a href="{{ object.image.url }}"><img src="{{ object.get_display_url }}" alt="{{ object.title }}"/></a>
+    {% if object.caption %}<p>{{ object.caption }}</p>{% endif %}
+</div>
+{% endblock %}

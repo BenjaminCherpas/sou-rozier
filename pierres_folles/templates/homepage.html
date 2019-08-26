@@ -1,0 +1,228 @@
+{% extends "coop_cms/article.html" %}
+
+{% load coop_edition thumbnail coop_utils coop_navigation i18n %}
+
+{% block cms_navigation %}
+{% navigation_as_nested_ul css_class="page-scroll" %}
+{% endblock cms_navigation %}
+
+{% block extra_head %}
+    {{ block.super }}
+    {{ runner_form.media }}
+
+    <!--<script>-->
+      <!--function openInNewTab(url) {-->
+          <!--var win = window.open(url, '_blank');-->
+          <!--win.focus();-->
+      <!--}-->
+
+      <!--window.onload = function() {-->
+        <!--var rozierLatLng = new google.maps.LatLng(45.80859,4.270556);-->
+        <!--var myOptions = {-->
+            <!--center: rozierLatLng,-->
+            <!--zoom: 9,-->
+            <!--mapTypeId: google.maps.MapTypeId.ROADMAP,-->
+            <!--disableDefaultUI: true,-->
+            <!--scrollwheel: false,-->
+            <!--navigationControl: true,-->
+            <!--mapTypeControl: false,-->
+            <!--scaleControl: false,-->
+            <!--draggable: false-->
+        <!--};-->
+
+        <!--var map = new google.maps.Map(document.getElementById("map"), myOptions);-->
+
+        <!--var marker = new google.maps.Marker({-->
+            <!--position: rozierLatLng,-->
+            <!--map: map,-->
+            <!--title: 'Rozier en Donzy',-->
+            <!--label: 'Rozier en Donzy',-->
+        <!--});-->
+
+        <!--google.maps.event.addListener(marker, 'click', function() {-->
+          <!--openInNewTab('https://goo.gl/maps/5SqEB');-->
+        <!--});-->
+
+        <!--$(".article-logo img").addClass('img-responsive');-->
+
+        <!--$("#id_city").addClass('form-control');-->
+
+    <!--}-->
+    <!--</script>-->
+
+{% endblock %}
+
+
+{% block document %}
+    {% cms_edit article %}
+
+    <!-- Intro Section -->
+    <section id="about" class="intro-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="article-logo">{{ article.logo }}</div>
+                    <h1>{{ article.title }}</h1>
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6">
+                {{ article.content }}
+              </div>
+
+              <div class="col-sm-6">
+                <div class="le-sou">
+                {% coop_piece_of_html "Sou" %}
+                </div>
+
+
+                <div style="margin-top: 30px; text-align: right;">
+                  <div
+                    class="fb-like" data-layout="standard" data-show-faces="true"
+                    data-href="https://www.facebook.com/lacoursedespierresfolles"
+                  ></div>
+                </div>
+
+                <div class="email-subscribe" style="margin-top: 30px;">
+                  <h4>Inscription Newsletter</h4>
+                  <p>Restez informés des actualités de la course en nous suivant sur Facebook
+                    et en vous inscrivant à notre newsletter.</p>
+                  <iframe src="{% url 'emailing_email_subscribe_subscription' 1 %}" width=100%" height="100px" frameborder=0></iframe>
+                </div>
+
+              </div>
+
+
+
+
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-sm-12">
+                <div class="pull-right">
+
+                </div>
+              </div>
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+    <section id="rozier" class="rozier-section">
+        <div class="container">
+            <div class="row">
+
+              <div class="col-sm-6">
+                {% coop_piece_of_html "Rozier" %}
+              </div>
+
+              <div class="col-sm-4 col-sm-offset-1">
+                  <div id="map" style="width:350px; height: 350px"></div>
+              </div>
+                <script>
+                  var map = new OpenLayers.Map('map');
+                  var mapnik = new OpenLayers.Layer.OSM();
+                  map.addLayer(mapnik);
+                  var center = new OpenLayers.LonLat(4.270556, 45.80859) // Centre de la carte
+                  .transform(
+                      new OpenLayers.Projection("EPSG:4326"), // transformation de WGS 1984
+                      new OpenLayers.Projection("EPSG:900913") // en projection Mercator sphérique
+                  );
+                  var zoom = 12;
+                  var marker_layer = new OpenLayers.Layer.Markers( "Markers" );
+                  marker = new OpenLayers.Marker(center);
+                  marker.events.register('mouseover', marker, function(evt) {
+                      popup = new OpenLayers.Popup.FramedCloud("Popup",
+                          center,
+                          null,
+                          '<div class="info_bulle"><p>Les Pierres Folles</p></div>',
+                          null,
+                          false
+                      );
+                      map.addPopup(popup);
+                  });
+                  //here add mouseout event
+                  marker.events.register('mouseout', marker, function(evt) {
+                      popup.hide();
+                  });
+                  marker_layer.addMarker(marker);
+                  map.addLayer(marker_layer);
+                  map.setCenter(center, zoom);
+                </script>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="photo-section">
+
+      {% coop_image_list 'Album Homepage' as homepage_album %}
+      <div class="row">
+        <div class="col-sm-12 homepage-carousel">
+          {% include "coop_bootstrap/carousel.html" with image_list=homepage_album %}
+        </div>
+      </div>
+
+    </section>
+
+
+    <section class="partenaires-section">
+      <div id="partenaires" class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h3>Sponsors</h3>
+          </div>
+        </div>
+
+        {% include "_best_partners.html" with partners=primary_partners %}
+        {% include "_partners.html" with partners=secondary_partners %}
+
+      </div>
+    </section>
+
+
+    {% coop_fragments "homepage_section" template_name="homepage_section.html" %}
+
+    {% end_cms_edit %}
+
+    {% if inscription_active %}
+    <section class="inscription-section">
+      <div id="inscriptions" class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h3>Inscription</h3>
+
+            <form role="form" action="{% url 'course_inscription' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <ul class="inscription-form">{{ runner_form.as_ul }}</ul>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="pull-right">
+                  <input type="submit" class="btn btn-primary align-right" value="S'inscrire et Payer">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="helptext" style="text-align: right;">
+                  Vous serez redirigé vers le site de PayPlug, notre partenaire bancaire
+                </div>
+              </div>
+            </div>
+
+          </form>
+
+
+          </div>
+        </div>
+      {% endif %}
+
+    {% if_cms_edition %}
+    {% include "coop_cms/_article_publication.html" %}
+    {% endif %}
+{% endblock %}

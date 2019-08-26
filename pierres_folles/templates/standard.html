@@ -1,0 +1,26 @@
+{% extends "coop_cms/article.html" %}
+
+{% load coop_edition coop_utils i18n %}
+
+
+{% block article %}
+{% cms_edit article %}
+
+<section id="intro" class="intro-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="article-logo">{{ article.logo }}</div>
+        <h1 class="article-title">{{ article.title }}</h1>
+        <div class="article-content">{{ article.content }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+{% end_cms_edit %}
+	
+{% if_cms_edition %}
+{% include "coop_cms/_article_publication.html" %}
+{% endif %}
+
+{% endblock %}

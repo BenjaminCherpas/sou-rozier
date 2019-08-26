@@ -1,0 +1,50 @@
+{% extends "coop_cms/article.html" %}
+
+{% load coop_edition thumbnail coop_utils coop_navigation i18n %}
+
+{% block cms_navigation %}
+{% navigation_as_nested_ul tree="sou" css_class="page-scroll" %}
+{% endblock cms_navigation %}
+
+{% block extra_head %}
+    {{ block.super }}
+{% endblock %}
+
+{% block document %}
+    {% coop_docs_list article.articlemedia.media_filter.name as docs %}
+
+    {% cms_edit article %}
+
+    <div class="article-content">
+        {% block article_content %}
+        <h1>{{ article.title }}</h1>
+        {{ article.content }}
+        {% endblock %}
+
+        {% for docs_group in docs|group_in_sublists:3 %}
+        <div class="row">
+            {% for doc in docs_group %}
+                <div class="col-sm-4">
+                    <div class="doc-file">
+                        <h4>{{ doc.name }}</h4>
+                        {% thumbnail doc.file "300" as img %}
+                           <img src="{{ img.url}}" class="img-responsive" />
+                        {% endthumbnail %}
+                        <a href="{{ doc.get_download_url }}" class="btn btn-success">Télécharger en HD</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+
+      </div>
+    </div>
+
+    {% end_cms_edit %}
+
+
+    {% if_cms_edition %}
+    {% include "coop_cms/_article_publication.html" %}
+    {% endif %}
+{% endblock %}

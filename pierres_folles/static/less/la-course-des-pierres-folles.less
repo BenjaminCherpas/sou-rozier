@@ -1,0 +1,329 @@
+@vert: #8DC648;
+
+@media(max-width:767px) {
+    .navbar-brand img{
+        width: 150px;
+        margin-top: -12px;
+        border-radius: 0;
+    }
+}
+
+@media(min-width:768px) {
+    .navbar-brand img{
+        width: 320px;
+        border-radius: 16px;
+        margin-top: -30px;
+        position: absolute;
+    }
+
+    .top-nav-collapse .navbar-brand img{
+        width: 143px;
+        margin-top: -20px;
+        border-radius: 0;
+    }
+
+    .navbar-nav {
+        margin-left: 320px;
+    }
+}
+
+.intro-section {
+    height: 100%;
+    padding-top: 150px;
+    padding-bottom: 100px;
+    background: #fff;
+    font-size: 1.2em;
+}
+
+.rozier-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background: #ccc;
+}
+
+.intro-section b{
+    padding: 2px 5px;
+    border-radius: 8px;
+    background: @vert;
+    color: #fff;
+}
+
+
+.intro-section h1{
+    text-align: center;
+    margin: 15px 0;
+    padding: 10px;
+    border: solid 2px @vert;
+    color: @vert;
+    background: #f0f0f0;
+    border-radius: 16px;
+}
+
+.intro-section h1{
+    text-align: center;
+}
+
+.photo-section {
+    height: 100%;
+    padding: 0px;
+    background: #444;
+}
+
+.reglement-section {
+    height: 100%;
+    padding-top: 50px;
+    background: #444;
+    color: #fff;
+}
+
+.partenaires-section {
+    height: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background: #fff;
+}
+
+.inscription-section {
+    height: 100%;
+    padding: 50px;
+    background: #eee;
+}
+
+ul.inscription-form {
+  list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.inscription-form li{
+  margin-bottom: 20px;
+}
+
+.article-logo {
+    text-align: center;
+    background: #444;
+}
+
+.article-logo img {
+    text-align: center;
+    margin: auto;
+}
+
+a.partner {
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    display: block;
+    padding: 20px;
+    border: solid 1px transparent;
+}
+
+a.partner:hover, a.partner:focus {
+    color: #000;
+    text-decoration: none;
+    border: solid 1px #ccc;
+}
+
+.homepage-carousel img {
+    text-align: center;
+    margin: auto;
+}
+
+.footer {
+    padding: 20px;
+    background: #444;
+    color: #fff;
+}
+.social-share img {
+    width: 24px;
+}
+
+ul.footer-nav{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.footer-nav li{
+    margin: 0;
+    padding: 0;
+}
+
+ul.footer-nav li a, .footer a{
+    color: #fff;
+}
+
+ul.footer-nav li a:hover, ul.footer-nav li a:focus,
+.footer a:hover, .footer a:focus{
+    color: #eee;
+}
+
+.intro-section .le-sou{
+    font-size: 0.8em;
+    border: solid 1px #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: justify;
+}
+
+.intro-section .le-sou img {
+    margin-right: 4px;
+}
+
+#map {
+    margin-top: 20px;
+    margin: auto;
+    text-align: center;
+}
+
+.ui-menu-item {
+    font-size: 0.8em;
+}
+
+ul.errorlist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.errorlist li{
+    color: red;
+    margin-bottom: -20px;
+    float: right;
+}
+
+a.partner img {
+    vertical-align: top;
+}
+
+@media(max-width:992px) {
+    .nav > li.fb-like-in-menu > a{
+        //display: none;
+        width: 80px;
+    }
+}
+
+@media(min-width:768px) {
+
+    .partners .row {
+        display: table;
+    }
+
+    .partners [class*="col-"] {
+        float: none;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .partners .col-sm-3 {
+        width: 25%;
+    }
+
+    .partners .col-sm-4 {
+        width: 33.3333333%;
+    }
+
+    .partners .img-fluid {
+        width: 100%;
+    }
+}
+
+@media(max-width:767px) {
+
+    .partners .img-fluid {
+        max-width: 30%;
+        margin: auto;
+    }
+}
+
+@media(max-width:360px) {
+
+    .partners .img-fluid {
+        max-width: 40%;
+        margin: auto;
+    }
+}
+
+.helptext {
+    color: #888;
+    font-size: 0.9em;
+}
+
+section h3 {
+    color: #fff;
+    background: @vert;
+    padding: 5px 20px;
+    display: inline-block;
+    border-radius: 8px;
+}
+
+.classement-section {
+    background: #fff;
+    padding: 200px 50px;
+}
+
+@media print {
+    .classement-section {
+        padding: 0;
+    }
+
+    .classement-section select{
+        display: none;
+    }
+
+    .footer, .coop-bar-wrapper, .analytics {
+        display: none;
+    };
+
+
+}
+
+.gold {
+    color: gold;
+}
+
+.silver {
+    color: #c0c0c0;
+}
+
+.bronze {
+    color: firebrick;
+}
+
+.gallery-photo {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.photologue h3 {
+    background: transparent;
+    padding: 0;
+    color: #000;
+}
+
+.photo-gallery {
+    margin-bottom: 100px;
+    padding: 10px 5px;
+    border: solid thin #cccccc;
+    border-radius: 4px;
+}
+
+a.gallery-link {
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.photo-gallery-header {
+    padding: 10px 5px;
+    border: solid thin #cccccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background: #444;
+    color: #fff;
+}
+
+.photo-gallery-header h3{
+    padding: 0;
+    margin: 0;
+    color: #fff;
+}

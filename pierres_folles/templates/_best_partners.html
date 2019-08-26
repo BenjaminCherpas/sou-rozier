@@ -1,0 +1,16 @@
+{% load coop_utils thumbnail %}
+<div class="partners">
+  {% for partner in partners %}
+  <div class="row my-row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div style="text-align: center;">
+        <a class="partner" {% if partner.url %}href="{{ partner.url}}" target="_blank"{% endif %}>
+          {% thumbnail partner.logo "900" as im %}
+              <img src="{{ im.url }}" class="img-fluid" alt="{{ partner.name}}" title="{{ partner.name}}" />
+          {% endthumbnail %}
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

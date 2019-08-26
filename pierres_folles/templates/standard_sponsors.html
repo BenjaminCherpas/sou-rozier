@@ -1,0 +1,40 @@
+{% extends "standard.html" %}
+
+{% load coop_edition thumbnail coop_utils i18n %}
+
+{% block article %}
+{% cms_edit article %}
+
+<section id="intro" class="intro-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="article-title">{{ article.title }}</h1>
+        <div class="article-content">{{ article.content }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% end_cms_edit %}
+
+
+<section class="partenaires-section">
+      <div id="partenaires" class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h3>Sponsors</h3>
+          </div>
+        </div>
+
+        {% include "_best_partners.html" with partners=primary_partners %}
+        {% include "_partners.html" with partners=secondary_partners %}
+
+      </div>
+    </section>
+	
+{% if_cms_edition %}
+{% include "coop_cms/_article_publication.html" %}
+{% endif %}
+
+{% endblock %}

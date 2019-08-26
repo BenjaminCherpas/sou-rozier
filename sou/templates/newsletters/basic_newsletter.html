@@ -1,0 +1,34 @@
+{% extends "Emailing/newsletter.html" %}
+{% load i18n coop_edition coop_utils %}
+
+{% block body_style %}background: #fff; font-family: Arial, sans-serif; font-size: 12px;{% endblock %}
+
+{% block newsletter %}
+    {% nlf_css "td.tdr a"="color: #fff;" a="color: #000" h2="color: #6bf;" %}
+    <div style="background: #EFEFEF; color: #000; width: 700px; padding: 0; margin: 0 auto;">
+        <div style="position: relative">
+            <img style="margin: 0; width: 700px;" src="{{STATIC_URL}}img/banniere-fresque.png" alt="Fresque">
+            <img style="position: absolute; border-radius: 4px; right: 10px; bottom: -50px; width: 170px;" src="{{STATIC_URL}}img/logo-sou-rozier.jpg" alt="Logo">
+        </div>
+
+        <div>
+        <h1 style="padding: 10px; margin: 0;">{{ newsletter.subject }}</h1>
+        </div>
+
+        {% cms_edit newsletter %}
+        <table style="font-size: 18px; padding: 10px;"><tr>
+
+            <td style="width: 530px;">
+            {{ newsletter.content }}
+            </td>
+            
+            <td class="tdr" style="width: 150px; padding: 10px; vertical-align: top; background: #444; color: #fff; font-size: 14px;">
+                {% coop_piece_of_html "newsletter_right" extra_id=newsletter.id %}
+
+            </td>
+        </tr></table>
+        {% end_cms_edit %}
+
+    </div>
+    {% end_nlf_css %}
+{% endblock %}

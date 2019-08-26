@@ -1,0 +1,9 @@
+{% extends "standard_nologo.html" %}{% load coop_edition %}
+
+{% block article_content %}
+<div class="alert alert-info">
+  {% coop_piece_of_html into extra_id=article.id %}
+</div>
+<h1>{{ article.title }}</h1>
+{{ article.content }}
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block extra_head %}
+  <script>
+  $(function() {
+    $(".classement-selector").on('change', function() {
+      var target = $(this).val();
+      if (target == 'all') {
+        $(".pane").show();
+      } else {
+        $(".pane").hide();
+        $("."+target).show();
+      }
+      return false
+    });
+
+  });
+  </script>
+{% endblock %}
+
+{% block document %}
+<section class="classement-section"><div class="container-fluid">
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Classements 2015</h2>
+     </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+
+      <select class="form-control classement-selector">
+      <option value="all">Tous les classements</option>
+      {% for result in results %}
+      <option value="scratch-{{ result.course.id }}">{{ result.course.name }} - Scratch</option>
+      {% for category in result.categories %}
+          {% if category.inscrits %}
+            <option value="{{ category.name|slugify }}-{{ result.course.id }}">
+              {{ result.course.name }} - {{ category.name}}
+            </option>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+      </select>
+    </div>
+   </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      {% for result in results %}
+        <div class="scratch-{{ result.course.id }} pane">
+          <h3>{{ result.course.name }} - Scratch</h3>
+
+          <table class="table table-responsive table-striped ">
+          {% for inscrit in result.scratch %}
+            <tr>
+              <td>
+                {{ forloop.counter }}
+                {% if inscrit.award %}<span class="glyphicon glyphicon-certificate {{ inscrit.award }} %}"></span>{% endif %}
+              </td>
+              <td>
+                <span class="label label-default">{{ inscrit.numero }}</span>
+                {{ inscrit.fullname }}
+              </td>
+              <td>
+                {{ inscrit.temps }}
+              </td>
+              <td>
+                {{ inscrit.category.name }}
+              </td>
+              <td>
+                {{ inscrit.gender_position }} {{ inscrit.get_gender_display }}
+              </td>
+            </tr>
+          {% endfor %}
+          </table>
+        </div>
+
+        {% for category in result.categories %}
+          <div class="{{ category.name|slugify }}-{{ result.course.id }} pane">
+          {% if category.inscrits %}
+            <h3>{{ result.course.name }} - {{ category.name }}</h3>
+            <table class="table table-responsive table-striped">
+            {% for inscrit in category.inscrits %}
+              <tr>
+                <td>
+                  {{ forloop.counter }}
+                  {% if inscrit.award %}<span class="glyphicon glyphicon-certificate {{ inscrit.award }} %}"></span>{% endif %}
+                </td>
+                <td>
+                  <span class="label label-default">{{ inscrit.numero }}</span>
+                  {{ inscrit.fullname }}
+                </td>
+                <td>
+                  {{ inscrit.temps }}
+                </td>
+                <td>
+                  {{ inscrit.gender_position }} {{ inscrit.get_gender_display }}
+                </td>
+              </tr>
+            {% endfor %}
+            </table>
+          {% endif %}
+          </div>
+        {% endfor %}
+
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+</div></section>
+{% endblock %}

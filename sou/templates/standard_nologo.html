@@ -1,0 +1,25 @@
+{% extends "coop_cms/article.html" %}
+
+{% load coop_edition thumbnail coop_utils coop_navigation i18n %}
+
+{% block extra_head %}
+    {{ block.super }}
+{% endblock %}
+
+{% block document %}
+    {% cms_edit article %}
+
+    <div class="article-content">
+        {% block article_content %}
+        <h1>{{ article.title }}</h1>
+        {{ article.content }}
+        {% endblock %}
+      </div>
+    </div>
+
+    {% end_cms_edit %}
+
+    {% if_cms_edition %}
+    {% include "coop_cms/_article_publication.html" %}
+    {% endif %}
+{% endblock %}

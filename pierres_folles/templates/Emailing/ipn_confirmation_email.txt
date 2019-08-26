@@ -1,0 +1,18 @@
+{% load i18n balafon_utils %}
+
+Bonjour,
+
+Nous avons bien reçu votre inscription pour la 3ème édition de la Course des Pierres Folles.
+
+Votre nom : {{ runner.fullname }}
+Vous êtes inscrit sur la course "{{ runner.competition.name }}"
+
+Merci de votre participation.
+
+Rendez-vous Samedi 23 septembre à partir de 13h00 à Rozier en Donzy.
+
+Merci de confirmer votre adresse email, en cliquant sur le lien suivant:
+
+http://{{site}}{{verification_url}}
+
+Les organisateurs de la Course des Pierres Folles

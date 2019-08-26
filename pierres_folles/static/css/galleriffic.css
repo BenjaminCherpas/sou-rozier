@@ -1,0 +1,243 @@
+.galleriffic {
+	height: 800px;
+}
+
+.galleriffic div.content {
+	/* The display of content is enabled using jQuery so that the slideshow content won't display unless javascript is enabled. */
+	display: none;
+	float: right;
+	width: 70%;
+	padding: 0;
+	vertical-align: top;
+}
+
+
+.galleriffic div.navigation {
+	padding: 0;
+	width: 28%;
+	vertical-align: top;
+	float: left;
+}
+
+
+.galleriffic div.content a, .galleriffic div.navigation a {
+	text-decoration: none;
+	color: #777;
+}
+
+.galleriffic div.content a:focus, .galleriffic div.content a:hover, .galleriffic div.content a:active {
+	text-decoration: underline;
+}
+
+.galleriffic div.controls {
+	margin-top: 5px;
+	height: 23px;
+}
+
+.galleriffic div.controls a {
+	padding: 5px;
+}
+
+.galleriffic div.ss-controls {
+	float: left;
+}
+
+.galleriffic div.nav-controls {
+	float: right;
+}
+
+.galleriffic div.slideshow-container {
+	position: relative;
+	clear: both;
+	/*height: 502px; - This should be set to be at least the height of the largest image in the slideshow */
+}
+
+.galleriffic div.loader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url('loader.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+	/*width: 550px;*/
+	/*height: 502px; - This should be set to be at least the height of the largest image in the slideshow */
+}
+
+.galleriffic div.slideshow {
+
+}
+
+.galleriffic div.slideshow img{
+	width: 100%;
+	max-height: 800px;
+	max-width: 800px;
+}
+
+
+.galleriffic div.slideshow span.image-wrapper {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.galleriffic div.slideshow a.advance-link {
+	display: block;
+	/*width: 550px;*/
+	/* height: 502px; - This should be set to be at least the height of the largest image in the slideshow */
+	/* line-height: 502px; - This should be set to be at least the height of the largest image in the slideshow */
+	text-align: center;
+}
+
+.galleriffic div.slideshow a.advance-link:hover,
+.galleriffic div.slideshow a.advance-link:active,
+.galleriffic  div.slideshow a.advance-link:visited {
+	text-decoration: none;
+}
+
+.galleriffic div.slideshow img {
+	vertical-align: middle;
+	border: 1px solid #ccc;
+}
+
+.galleriffic div.download {
+	float: right;
+	z-index: 100;
+}
+.galleriffic div.caption-container {
+	width: 100%;
+	background: #ccc;
+}
+
+.galleriffic div.caption-container .caption.previous{
+	display: none;
+}
+
+.galleriffic div.caption-container .mini-caption{
+	font-weight: normal;
+	font-size: 0.8em;
+}
+
+/*
+.galleriffic span.image-caption {
+	display: block;
+	position: absolute;
+}
+*/
+
+/*
+.galleriffic div.caption {
+	background-color: #000;
+	padding: 12px;
+	color: #ccc;
+}
+
+.galleriffic div.caption a {
+	color: #fff;
+}
+*/
+.galleriffic div.image-title {
+	font-weight: bold;
+}
+
+.galleriffic div.image-desc {
+}
+
+.galleriffic div.navigation {
+	/* The navigation style is set using jQuery so that the javascript specific styles won't be applied unless javascript is enabled. */
+}
+
+.galleriffic ul.thumbs {
+	clear: both;
+	margin: 0;
+	padding: 0;
+}
+
+.galleriffic ul.thumbs li {
+	float: none;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.galleriffic a.thumb {
+	padding: 0;
+	display: inline;
+	border: none;
+}
+
+.galleriffic ul.thumbs li.selected a.thumb {
+	color: #000;
+	font-weight: bold;
+}
+
+.galleriffic a.thumb:focus {
+	outline: none;
+}
+
+.galleriffic ul.thumbs li {
+	width: 45%;
+	margin: 1%;
+	max-width: 100px;
+	display: inline-block;
+}
+
+.galleriffic ul.thumbs img {
+	border: none;
+	display: inline-block;
+}
+
+.galleriffic div.pagination {
+	clear: both;
+}
+
+.galleriffic div.navigation img {
+	width: 100%;
+}
+
+.galleriffic div.navigation div.top {
+	margin-bottom: 50px;
+	height: 11px;
+}
+
+.galleriffic div.navigation div.bottom {
+	margin-top: 12px;
+}
+
+.galleriffic div.pagination a,
+.galleriffic div.pagination span.current,
+.galleriffic div.pagination span.ellipsis {
+	display: block;
+	float: left;
+	margin-right: 2px;
+	padding: 4px 7px 2px 7px;
+	border: 1px solid #ccc;
+	font-size: 0.9em;
+}
+
+.galleriffic div.pagination a:hover {
+	background-color: #eee;
+	text-decoration: none;
+}
+
+.galleriffic div.pagination span.current {
+	font-weight: bold;
+	background-color: #000;
+	border-color: #000;
+	color: #fff;
+}
+
+.galleriffic div.pagination span.ellipsis {
+	border: none;
+	padding: 5px 0 3px 2px;
+}
+
+.galleriffic #captionToggle a {
+	float: right;
+	display: block;
+	background-image: url('caption.png');
+	background-repeat: no-repeat;
+	background-position: right;
+	margin-top: 5px;
+	padding: 5px 30px 5px 5px;
+}

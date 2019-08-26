@@ -1,0 +1,46 @@
+{% extends "coop_cms/newsletter_base.html" %}
+{% load i18n coop_edition coop_utils %}
+
+{% block body_style %}background: #822; font-family: 'Verdana', sans-serif; font-size: 12px;{% endblock %}
+
+{% block newsletter %}
+    {% nlf_css a="color: #000" h3="font-weight: bold;" h2="border-bottom: solid thin #000; padding: 3px 6px;" "h2 a"="color: #fff;" %}
+    <div style="background: #fff; color: #000; width: 700px; padding: 20px; margin: 0 auto;">
+        <div style="background: #fff; padding: 10px; color: #fff; border-bottom: solid 20px #000;">
+            <img style="margin: 0; width: 305px;" src="{{STATIC_URL}}img/logo-cie1.png" alt="La Compagnie Les Pas Sages">
+            <img style="float: right; width: 200px;" src="{{STATIC_URL}}img/clown-ballon.png" alt="Stages de Clown-Théâtre">
+        </div>
+    
+        <table style="font-size: 12px;"><tr>
+            <td style="width: 700px;">
+            {% cms_edit newsletter %}
+            <h1 style="margin: 5px 0;">{{ newsletter.subject }}</h1>
+            {{ newsletter.content }}
+            {% end_cms_edit %}
+            </td>
+        </tr></table>
+        
+        <div>
+            <h2>{% trans "Actualités" %}</h2>
+            <table style="border: none;">
+            {% for nl_item in newsletter.items.all %}
+                {% with item=nl_item.content_object %}
+                <tr>
+                    <td style="border: none; width: 200px;">
+                        <img style="width: 200px; padding: 0 5px 5px 0;" src="{{MEDIA_URL}}{{item.logo_thumbnail}}"/>
+                    </td>
+                    <td style="border: none; width: 500px;">
+                        <h3>{{item.title}}</h3>
+                        <div class="summary">
+                            {{item.summary|safe}}
+                            <a style="" href="{{item.get_absolute_url}}">{% trans "En savoir plus"%}</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endwith %}
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% end_nlf_css %}
+{% endblock %}

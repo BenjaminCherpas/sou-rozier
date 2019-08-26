@@ -1,0 +1,16 @@
+{% load i18n balafon_utils %}
+
+{% blocktrans %}
+Bonjour,
+
+Nous avons bien reçu votre inscription pour la Course des Pierres Folles. Merci de votre participation.
+
+Rendez-vous Samedi 3 octobre à partir de 14h00 à la salle de l'Amical Laïque à Rozier.
+
+Merci de confirmer votre adresse email, en cliquant sur le lien suivant:
+
+http://{{site}}{{verification_url}}
+
+Le Sou des Ecoles de Rozier en Donzy
+
+{% endblocktrans %}

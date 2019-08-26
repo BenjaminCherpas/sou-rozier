@@ -1,0 +1,149 @@
+{% extends "photologue/root.html" %}
+{% load i18n staticfiles coop_utils pl_extra_tags %}
+
+{% block extra_title %} - {{object.title|normalize_utf8_to_ascii}}{% endblock %}
+{% block description %}{{object.title}}{% endblock %}
+
+
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "css/galleriffic.css" %}" type="text/css" />
+    <script type="text/javascript" src="{% static "js/jquery.galleriffic.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery.opacityrollover.js" %}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            // We only want these styles applied when javascript is enabled
+            /*$('.galleriffic div.navigation').css({'width' : '250px', 'float' : 'left'});*/
+            $('.galleriffic div.content').css('display', 'block');
+
+            // Initially set opacity on thumbs and add
+            // additional styling for hover effect on thumbs
+            var onMouseOutOpacity = 0.67;
+            $('#thumbs ul.thumbs li').opacityrollover({
+                mouseOutOpacity:   onMouseOutOpacity,
+                mouseOverOpacity:  1.0,
+                fadeSpeed:         'fast',
+                exemptionSelector: '.selected'
+            });
+
+            // Initialize Advanced Galleriffic Gallery
+            var gallery = $('#thumbs').galleriffic({
+                delay:                     2500,
+                numThumbs:                 12,
+                preloadAhead:              10,
+                enableTopPager:            true,
+                enableBottomPager:         false,
+                maxPagesToShow:            2,
+                imageContainerSel:         '#slideshow',
+                controlsContainerSel:      '#controls',
+                captionContainerSel:       '#caption',
+                loadingContainerSel:       '#loading',
+                renderSSControls:          true,
+                renderNavControls:         true,
+                playLinkText:              '<span class="glyphicon glyphicon-play"></span> Lancer le diaporama',
+                pauseLinkText:             '<span class="glyphicon glyphicon-pause"></span> Pause',
+                prevLinkText:              '<span class="glyphicon glyphicon-backward"></span>',
+                nextLinkText:              '<span class="glyphicon glyphicon-forward"></span>',
+                nextPageLinkText:          '<span class="glyphicon glyphicon-fast-forward"></span>',
+                prevPageLinkText:          '<span class="glyphicon glyphicon-fast-backward"></span>',
+                playLinkTitle:             '{% trans "Play" %}',
+                pauseLinkTitle:             '{% trans "Pause" %}',
+                prevLinkTitle:              '{% trans "Previous" %}',
+                nextLinkTitle:              '{% trans "Next" %}',
+                nextPageLinkTitle:          '{% trans "Next page" %}',
+                prevPageLinkTitle:          '{% trans "Previous page" %}',
+                enableHistory:             false,
+                autoStart:                 false,
+                syncTransitions:           true,
+                defaultTransitionDuration: 900,
+                onSlideChange:             function(prevIndex, nextIndex) {
+                    // 'this' refers to the gallery, which is an extension of $('#thumbs')
+                    this.find('ul.thumbs').children()
+                        .eq(prevIndex).fadeTo('fast', onMouseOutOpacity).end()
+                        .eq(nextIndex).fadeTo('fast', 1.0);
+                },
+                onPageTransitionOut:       function(callback) {
+                    this.fadeTo('fast', 0.0, callback);
+                },
+                onTransitionOut: function(previousSlide, previousCaption, isSync, transitionOutCallback) {
+                    previousSlide.fadeTo(this.getDefaultTransitionDuration(isSync), 0.0, transitionOutCallback);
+                    if (previousCaption)
+                        previousCaption.hide();
+                },
+                onPageTransitionIn:        function() {
+                    this.fadeTo('fast', 1.0);
+                }
+            });
+            $(".article").css("min-height", {{gallery|max_height}}+120);
+            
+            if (location.hash) {
+                $.galleriffic.gotoImage(location.hash);    
+            }
+            
+        });
+</script> 
+
+{% endblock %}
+
+{% block title %}{% trans "Media" %}{% endblock %}
+
+{% block content_inside %}
+    <div class="standard">
+    <div class="article-title photo-gallery-header">
+      <h3>{{gallery.title}}</h3>
+      <a class="pull-right btn btn-default" href="{% url 'pl-gallery-archive' %}">Retour aux albums photos</a>
+    </div>
+    </div>
+    
+    <div class="galleriffic">
+        <!-- Start Advanced Gallery Html Containers -->
+        <div id="thumbs" class="navigation">
+                <ul class="thumbs noscript">
+                    {% for photo in gallery.public %}
+                    <li>
+                        <a class="thumb" name="{{ photo.id }}" title="{{ photo.title }}" href="{{ photo.get_display_url }}">
+                          <img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/>
+                        </a>
+                        <div class="caption">
+                            <div class="download">
+                                <a download="{{ photo.image.url|basename }}" href="{{ photo.image.url }}">
+                                    <span class="glyphicon glyphicon-floppy-save"></span>
+                                  Télécharger en HD
+                                </a>&nbsp;
+                            </div>
+                            <div class="image-title" title="">
+                                {{ photo.title }}
+                                <div class="mini-caption">{{ photo.caption }}</div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+        </div>
+        
+        <div id="gallery" class="content">
+                <div id="controls" class="controls"></div>
+                <div id="caption" class="caption-container"></div>
+                <div class="slideshow-container">
+                    <div id="loading" class="loader"></div>
+                    <div id="slideshow" class="slideshow"></div>
+                </div>
+        </div>
+        
+        <div style="clear: both;"></div>
+    </div>
+
+{% comment %}
+{% if object.description %}<p>{{ object.description }}</p>{% endif %}
+<div class="photo-gallery">
+    {% for photo in object.public %}
+    <div class="gallery-photo">
+        <a href="{{ photo.get_absolute_url }}"><img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"/></a>
+    </div>
+    {% endfor %}
+</div>
+
+<p>{% trans "Originally published on" %} {{ object.date_added|date:"j F Y" }}</p>
+<p><a href="{% url 'pl-gallery-list' 1 %}">{% trans "View all galleries" %}</a></p>
+{% endcomment %}
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block extra_head %}
+    {{ block.super }}
+    {{ runner_form.media }}
+    <script src="/static/js/jquery-ui-1.9.2.js" charset="utf-8" type="text/javascript"></script>
+    <link href="{{STATIC_URL}}css/base/jquery-ui-1.9.2.css" rel="stylesheet" />
+    <script>
+      window.onload = function() {
+        $("#id_city").addClass('form-control');
+      }
+    </script>
+
+{% endblock %}
+
+{% block document %}
+    <section class="inscription-section" style="margin-top: 100px;">
+
+      <div class="container">
+
+      <h3>Inscription</h3>
+
+      <form role="form" action="{% url 'course_inscription' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <ul class="inscription-form">{{ form.as_ul }}</ul>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="pull-right">
+              <input type="submit" class="btn btn-primary align-right" value="S'inscrire et Payer">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="helptext" style="text-align: right;">
+              Vous serez redirigé vers le site de PayPlug, notre partenaire bancaire
+            </div>
+          </div>
+        </div>
+
+      </form>
+
+      </div>
+    </section>
+{% endblock %}

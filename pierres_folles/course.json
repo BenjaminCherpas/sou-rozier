@@ -1,0 +1,70 @@
+[
+{
+ "pk": 1, 
+ "model": "course.license", 
+ "fields": {
+  "nb_required": true, 
+  "name": "License Athl\u00e9 comp\u00e9tition FFA", 
+  "short_name": "comp\u00e9tition FFA"
+ }
+},
+{
+ "pk": 2, 
+ "model": "course.license", 
+ "fields": {
+  "nb_required": true, 
+  "name": "License Athl\u00e9 Sant\u00e9 - loisirs FFA Option Running", 
+  "short_name": "loisirs FFA"
+ }
+},
+{
+ "pk": 3, 
+ "model": "course.license", 
+ "fields": {
+  "nb_required": true, 
+  "name": "Pass Running FFA", 
+  "short_name": ""
+ }
+},
+{
+ "pk": 4, 
+ "model": "course.license", 
+ "fields": {
+  "nb_required": true, 
+  "name": "License FF Triathlon", 
+  "short_name": ""
+ }
+},
+{
+ "pk": 5, 
+ "model": "course.license", 
+ "fields": {
+  "nb_required": true, 
+  "name": "Licence FSCF, FSCT, UFOLEP, autorisant la pratique de l'athl\u00e9tisme en comp\u00e9tition ou de la course \u00e0 pied en comp\u00e9tition", 
+  "short_name": "Licence FSCF, FSCT, UFOLEP"
+ }
+},
+{
+ "pk": 6, 
+ "model": "course.license", 
+ "fields": {
+  "nb_required": false, 
+  "name": "Certificat M\u00e9dical de non-contre indication de l'athl\u00e9tisme en comp\u00e9tition ou de la course \u00e0 pied en comp\u00e9tition datant de moins d'un an", 
+  "short_name": "Certificat M\u00e9dical"
+ }
+},
+{
+ "pk": 1, 
+ "model": "course.competition", 
+ "fields": {
+  "name": "6 Kilom\u00e8tres"
+ }
+},
+{
+ "pk": 2, 
+ "model": "course.competition", 
+ "fields": {
+  "name": "11 Kilom\u00e8tres"
+ }
+}
+]

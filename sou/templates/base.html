@@ -1,0 +1,193 @@
+<!DOCTYPE html>{% load i18n static coop_navigation coop_utils coop_bar_tags thumbnail coop_edition %}
+<html lang="fr">
+  <head>
+
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sou des écoles de Rozier en Donzy {% block extra_title %}{% endblock %}</title>
+
+    <meta name="description" content="{% block description %}{% endblock %}">
+	
+    {% block jquery_declaration %}
+    {% include "coop_cms/_js_includes.html" %}
+    {% endblock %}
+	
+    <!-- Bootstrap core CSS -->
+    <link href="{{STATIC_URL}}bs/css/bootstrap.css" rel="stylesheet">
+	  <link rel="stylesheet" href="{{ STATIC_URL }}css/coop_cms.css?v=1.0" type="text/css" />
+    <link href="{{STATIC_URL}}css/scrolling-nav.css" rel="stylesheet">
+
+    <link href="{% versioned_static_file 'css/sou-rozier.css' %}" rel="stylesheet">
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{STATIC_URL}}bs/js/bootstrap.min.js"></script>
+
+    <!-- Scrolling Nav JavaScript -->
+    <script src="{{STATIC_URL}}js/jquery.easing.1.3.js"></script>
+    <script src="{{STATIC_URL}}js/scrolling-nav.js"></script>
+    <script src="/static/js/jquery-ui-1.9.2.js" charset="utf-8" type="text/javascript"></script>
+    <link href="{{STATIC_URL}}css/base/jquery-ui-1.9.2.css" rel="stylesheet" />
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	{% coop_bar_headers %}
+	{% block extra_head %}{% endblock %}
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.4&appId=628712167150475";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+	{% include "coop_cms/_messages.html" %}
+<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+    {% block navigation %}
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="/">
+                  Sou des Écoles de Rozier en Donzy
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+
+                    {% block cms_navigation %}
+                    {% navigation_as_nested_ul tree='sou' css_class="highlight" %}
+                    {% endblock cms_navigation %}
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a class="link-label">Bonjour {{ user.get_profile.contact.firstname }}</a>
+                    </li>
+                    <li>
+                      <a href="{% url 'logout' %}">
+                        Déconnexion
+                      </a>
+                    </li>
+                    {% endif %}
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="fb-like-in-menu">
+                    <a>
+                      <div
+                        class="fb-like" data-layout="button_count" data-href="https://www.facebook.com/sourozierendonzy"></div>
+                    </a>
+                  </li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    {% endblock %}
+
+    <div class="container-liquid">
+      <div class="content-page">
+        <div class="row">
+            <div class="col-sm-12">
+              <section id="about" class="slide-section intro-section">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-3" style="text-align: center">
+                      <img class="img-responsive img-logo" src="{{STATIC_URL}}img/logo-sou-rozier.jpg"
+                           alt="Le Sou des Écoles de Rozier en Donzy" title="Le Sou des Écoles de Rozier en Donzy" />
+                      <div class="small-title">Le Sou des Écoles <br />de Rozier en Donzy</div>
+                      <div class="about-us">
+                      {% coop_piece_of_html "a_propos_du_sou" readonly=1 %}
+                      </div>
+                    </div>
+
+                    <div class="col-sm-8 col-sm-offset-1">
+                      {% block content %}
+                          {% block document %} {% endblock %}
+                      {% endblock %}
+                    </div>
+                  </div>
+                </div>
+              </section>{% show_accept_cookie_message %}
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div class="row">
+
+            <div class="col-sm-3 col-sm-offset-2">
+              <h4>Contact</h4>
+              {% coop_piece_of_html "contact_sou" read_only=1 %}
+            </div>
+
+            <div class="col-sm-3">
+              <h4>Liens utiles</h4>
+              <ul class="footer-nav">
+                {% navigation_as_nested_ul tree='footer_sou' %}
+              </ul>
+            </div>
+
+            <div class="col-sm-3">
+              <h4>Suivez-nous</h4>
+              <ul class="footer-nav">
+                <li>
+                  <div class="fb-like" data-layout="standard" data-show-faces="true"
+                  data-href="https://www.facebook.com/sourozierendonzy"
+                  data-colorscheme="light"
+                  ></div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+    </div>
+
+	{% coop_bar %}
+
+	{% if debug or request.user.is_staff %}
+	<div class=".analytics" style="color: orange; font-size: small; float: right;">
+		<!--{% if request.user.is_staff %}Staff{% else %}Debug{% endif %}: Google Analytics disabled-->
+	</div>
+	{% else %}
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-9579717-8', 'auto');
+  ga('send', 'pageview');
+
+</script>
+	{% endif %}
+
+</body>
+</html>

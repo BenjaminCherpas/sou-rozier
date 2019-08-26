@@ -1,0 +1,10 @@
+{% load staticfiles %}
+{% if photo %}
+    {% spaceless %}
+    <a title="{{ photo.title }}" href="{{ photo.get_absolute_url }}">
+        <img class="next" src="{% static "img/next-dark.png" %}" />
+    </a>
+    {% endspaceless %}
+{% else %}
+    <img class="next" src="{% static "img/next.png" %}" />
+{% endif %}

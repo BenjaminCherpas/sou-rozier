@@ -1,0 +1,5 @@
+{% extends "registration/base.html" %}{% load i18n %}
+{% block registration_content %}
+<h2>{% trans "Your account is now active!" %}</h2>
+<p>Vous pouvez à présent <a class="btn btn-primary" href="{% url "django.contrib.auth.views.login" %}">vous connecter</a></p>
+{% endblock %}

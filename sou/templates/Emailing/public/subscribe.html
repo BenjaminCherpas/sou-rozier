@@ -1,0 +1,28 @@
+{% extends "Emailing/public/base_custom.html" %}
+{% load i18n emailing_utils %}
+
+{% block title %}Inscription à la Newsletter{% endblock %}
+
+{% block custom_content %}
+  <div class="document-form">
+  <form method="post" action="">{% csrf_token %}
+
+  <div class="section">
+    <h1>Inscription à la Newsletter</h1>
+
+    <div class="alert alert-info">
+      Promis, nous ne vous enverrons cette newsletter que lorsque nécessaire et vous pourrez vous désabonner à tout moment.
+    </div>
+
+    {% for field in form %}
+    {% include "balafon/_field_form.html" with allow_required_sign=1 %}
+  {% endfor %}
+
+    <div>
+      <input class="btn btn-primary pull-right" type="submit" value="{% trans "S'inscrire" %}">
+    </div>
+
+  </form>
+  
+  </div>
+{% endblock %}

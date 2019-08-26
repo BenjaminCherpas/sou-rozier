@@ -1,0 +1,184 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-23 17:26+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: settings.py:42
+msgid "Français"
+msgstr ""
+
+#: settings.py:43
+msgid "English"
+msgstr ""
+
+#: agenda/models.py:9
+msgid "title"
+msgstr ""
+
+#: agenda/models.py:10
+msgid "date"
+msgstr ""
+
+#: agenda/models.py:11
+msgid "date to"
+msgstr ""
+
+#: agenda/models.py:12
+msgid "time"
+msgstr ""
+
+#: agenda/models.py:13
+msgid "place"
+msgstr ""
+
+#: agenda/models.py:21
+msgid "agenda item"
+msgstr ""
+
+#: agenda/models.py:22
+msgid "agenda items"
+msgstr ""
+
+#: templates/base.html:52
+msgid "Agenda"
+msgstr ""
+
+#: templates/Emailing/public/subscribe.html:4
+msgid "Subscribe"
+msgstr ""
+
+#: templates/Emailing/public/subscribe.html:78
+msgid "Ok"
+msgstr ""
+
+#: templates/newsletters/basic_newsletter.html:44
+#: templates/newsletters/cdlh_newsletter.html:45
+msgid "Read more"
+msgstr ""
+
+#: templates/newsletters/cdlh_newsletter.html:33
+msgid "News"
+msgstr ""
+
+#: templates/photologue/gallery_archive.html:4
+msgid "Latest Photo Galleries"
+msgstr ""
+
+#: templates/photologue/gallery_archive.html:20
+#: templates/photologue/gallery_archive_day.html:20
+#: templates/photologue/gallery_archive_month.html:20
+#: templates/photologue/gallery_list.html:25
+msgid "No galleries were found."
+msgstr ""
+
+#: templates/photologue/gallery_archive.html:23
+#: templates/photologue/gallery_archive_day.html:23
+#: templates/photologue/gallery_archive_month.html:23
+#: templates/photologue/gallery_archive_year.html:14
+msgid "View all galleries."
+msgstr ""
+
+#: templates/photologue/gallery_archive_day.html:4
+#: templates/photologue/gallery_archive_month.html:4
+#: templates/photologue/gallery_archive_year.html:4
+msgid "Galleries for"
+msgstr ""
+
+#: templates/photologue/gallery_detail.html:42
+msgid "Play slideshow"
+msgstr "Jouer le diaporama"
+
+#: templates/photologue/gallery_detail.html:43
+msgid "Pause slideshow"
+msgstr "Arrêter le diaporama"
+
+#: templates/photologue/gallery_detail.html:44
+#: templates/photologue/gallery_list.html:32
+#: templates/photologue/photo_list.html:21
+msgid "Previous"
+msgstr "Précédent"
+
+#: templates/photologue/gallery_detail.html:45
+#: templates/photologue/gallery_list.html:34
+#: templates/photologue/photo_list.html:23
+msgid "Next"
+msgstr "Suivant"
+
+#: templates/photologue/gallery_detail.html:79
+msgid "Media"
+msgstr ""
+
+#: templates/photologue/gallery_detail.html:92
+msgid "Download"
+msgstr "Télécharger"
+
+#: templates/photologue/gallery_list.html:4
+#: templates/photologue/gallery_list.html:5
+msgid "Photos"
+msgstr ""
+
+#: templates/photologue/gallery_list.html:10
+msgid "All Galleries"
+msgstr ""
+
+#: templates/photologue/gallery_list.html:30
+msgid "galleries total."
+msgstr ""
+
+#: templates/photologue/gallery_list.html:33
+#: templates/photologue/photo_list.html:22
+#, python-format
+msgid "page %(page)s of %(pages)s"
+msgstr ""
+
+#: templates/photologue/photo_archive.html:4
+msgid "Latest Photos"
+msgstr ""
+
+#: templates/photologue/photo_archive.html:15
+#: templates/photologue/photo_archive_day.html:15
+#: templates/photologue/photo_archive_month.html:15
+msgid "No photos were found."
+msgstr ""
+
+#: templates/photologue/photo_archive.html:17
+#: templates/photologue/photo_archive_day.html:17
+#: templates/photologue/photo_archive_month.html:17
+msgid "View all photographs"
+msgstr ""
+
+#: templates/photologue/photo_archive_day.html:4
+#: templates/photologue/photo_archive_month.html:4
+msgid "Photos for"
+msgstr ""
+
+#: templates/photologue/photo_archive_year.html:4
+msgid "Photos for "
+msgstr ""
+
+#: templates/photologue/photo_list.html:4
+msgid "All Photos"
+msgstr ""
+
+#: templates/photologue/photo_list.html:14
+msgid "No photos were found"
+msgstr ""
+
+#: templates/photologue/photo_list.html:19
+msgid "photos total."
+msgstr ""
