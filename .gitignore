@@ -1,8 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 *.pyc
 .idea/*
-.hgcheck/*
-.hg/*
 dev/*
 env/*
 pierres_folles/public/media/*
